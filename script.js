@@ -7,27 +7,70 @@
 // 6: make a new function that has the old game one in it 5 times to play a match and declare a winner. 
 // 6: Declare the winner.
 let computerChoice;
-function getComputerChoice(){
+let userScore = 0;
+let computerScore = 0;
+let matchResult;
+let userChoice = prompt('Rock, Paper, Scissors, SHOOT! :');
+function getComputerChoice() {
     let min = Math.ceil(1);
     let max = Math.floor(3);
     let result = Math.floor(Math.random() * 3) + 1;
-    if (result == 1){
-        let computerChoice = 'Rock!';
+    if (result == 1) {
+        return (computerChoice = 'rock');
     }
-    else if (result == 2){
-        let computerChoice = "Paper!";
+    else if (result == 2) {
+        return (computerChoice = "paper");
     }
-    else{
-        let computerChoice = "Scissors!";
+    else {
+        return (computerChoice = "scissors");
     }
-return(computerChoice);
 }
-function game(userChoice,computerChoice){
-    userChoice.toLowerCase();
-if (userChoice == "rock" && computerChoice == "rock"){
-    console.log("Rock Ties Rock!");
-}
+function game(userChoice) {
+    userChoice = userChoice.toLowerCase();
+    getComputerChoice();
 
+    if (userChoice == "rock" && computerChoice == "rock") {
+        matchResult = "Rock Ties Rock!";
+    }
+    else if (userChoice == 'rock' && computerChoice == 'paper') {
+        matchResult = 'Paper beats rock, computer wins!';
+        computerScore++;
+    }
+    else if (userChoice == 'rock' && computerChoice == 'scissors') {
+        matchResult = 'Rock beats scissors, user wins!';
+        userScore++;
+    }
+
+
+    else if (userChoice == "paper" && computerChoice == "rock") {
+        matchResult = "Paper beats rock, user wins!";
+        userScore++;
+    }
+    else if (userChoice == 'paper' && computerChoice == 'paper') {
+        matchResult = 'Paper Ties Paper!';
+    }
+    else if (userChoice == 'paper' && computerChoice == 'scissors') {
+        matchResult = 'scissors beat paper, Computer wins!'; 
+        computerScore++;
+    }
+
+
+    else if (userChoice == "scissors" && computerChoice == "rock") {
+        matchResult = "rock beats scissors, Computer wins!";
+        computerScore++;
+    }
+    else if (userChoice == 'scissors' && computerChoice == 'paper') {
+        matchResult = 'scissors beat paper, User wins!';
+        userScore++;
+    }
+    else if (userChoice == 'scissors' && computerChoice == 'scissors') {
+        matchResult = 'Scissors tie Scissors!';
+    }
+
+    console.log(matchResult);
+    console.log(userScore);
+    console.log(computerScore);
 }
-getComputerChoice(); 
-console.log(result);
+game('rock');
+game('paper');
+game('scissors');
