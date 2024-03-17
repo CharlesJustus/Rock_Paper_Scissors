@@ -10,7 +10,7 @@ let computerChoice;
 let userScore = 0;
 let computerScore = 0;
 let matchResult;
-let userChoice = prompt('Rock, Paper, Scissors, SHOOT! :');
+
 function getComputerChoice() {
     let min = Math.ceil(1);
     let max = Math.floor(3);
@@ -25,8 +25,9 @@ function getComputerChoice() {
         return (computerChoice = "scissors");
     }
 }
-function game(userChoice) {
-    userChoice = userChoice.toLowerCase();
+function playRound() {
+    let userChoice = prompt('Rock, Paper, Scissors, SHOOT! :').toLowerCase();
+   
     getComputerChoice();
 
     if (userChoice == "rock" && computerChoice == "rock") {
@@ -68,9 +69,21 @@ function game(userChoice) {
     }
 
     console.log(matchResult);
-    console.log(userScore);
-    console.log(computerScore);
+    return(userScore,computerScore);
 }
-game('rock');
-game('paper');
-game('scissors');
+
+function playGame(){
+    for (let i = 0; i < 5; i++){
+        playRound();
+    }
+    if (userScore > computerScore){
+        console.log('User wins!!! ' + userScore + ' to ' + computerScore);
+    }
+    else if (userScore < computerScore){
+        console.log('HAHA COMPUTER WINS!!! ' + computerScore + ' to ' + userScore);
+    }
+    else{
+        console.log("It's a tie, LAMEEEE!");
+    }
+}
+playGame();
